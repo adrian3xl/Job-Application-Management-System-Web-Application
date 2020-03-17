@@ -12,5 +12,8 @@ namespace JobApp_Web_.Data
             : base(options)
         {
         }
+
+        public DbSet<Jobseeker> Jobseeker { get; set;}
+
     }
 }
