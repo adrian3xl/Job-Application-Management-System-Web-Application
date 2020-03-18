@@ -14,6 +14,10 @@ namespace JobApp_Web_.Data
         }
 
         public DbSet<Jobseeker> Jobseeker { get; set;}
+        public DbSet<Employer>Employers { get; set; }
+        public DbSet<Resume> Resumes { get; set; }
+        public DbSet<vacancy> Vacancies { get; set; }
+        public DbSet<Vacancy_Application> Vacancy_Applications { get; set; }
 
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JobApp_Web_.Data
 {
@@ -18,7 +16,8 @@ namespace JobApp_Web_.Data
         public DateTime Submit_deadline { get; set; }
         public string Job_category { get; set; }
 
+        [ForeignKey("Employer_Id")]
         public Employer Employer { get; set; }
-        public int EmployerId { get; set; }
+        public int Employer_Id { get; set; }
     }
 }
