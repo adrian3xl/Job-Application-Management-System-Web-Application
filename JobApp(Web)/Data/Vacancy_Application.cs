@@ -13,9 +13,6 @@ namespace JobApp_Web_.Data
         public Resume Resume_request { get; set; }
         public int resume_request_id { get; set; }
 
-      //  [ForeignKey("Jobseeker_Id")]
-        public Jobseeker Jobseeker_request { get; set; }
-        public string Jobseeker_request_id { get; set; }
 
        // [ForeignKey("vacancy_id")]
         public vacancy vacancy_request { get; set; }
