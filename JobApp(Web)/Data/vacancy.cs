@@ -18,6 +18,6 @@ namespace JobApp_Web_.Data
 
         [ForeignKey("Employer_Id")]
         public Employer Employer { get; set; }
-        public int Employer_Id { get; set; }
+        public string Employer_Id { get; set; }
     }
 }
