@@ -9,6 +9,11 @@ namespace JobApp_Web_.Repository
 {
     public class Vacancy_ApplicationRepository : IVacancyApplicationRepository
     {
+        private readonly ApplicationDbContext _db;
+        public Vacancy_ApplicationRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         public bool Create(Vacancy_Application Entity)
         {
             throw new NotImplementedException();

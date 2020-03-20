@@ -9,6 +9,12 @@ namespace JobApp_Web_.Repository
 {
     public class ResumeRepository : IResumeRepository
     {
+        private readonly ApplicationDbContext _db;
+        public ResumeRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
         public bool Create(Resume Entity)
         {
             throw new NotImplementedException();

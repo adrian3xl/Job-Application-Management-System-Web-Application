@@ -10,9 +10,9 @@ namespace JobApp_Web_.Repository
     public class EmployerRepository : IEmployerRepository
     {
         private readonly ApplicationDbContext _db;
-        public EmployerRepository()
+        public EmployerRepository(ApplicationDbContext db)
         {
-                
+            _db = db;
         }
         public bool Create(Employer Entity)
         {
