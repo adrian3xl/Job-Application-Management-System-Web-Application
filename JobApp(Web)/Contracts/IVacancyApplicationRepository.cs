@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobApp_Web_.Contracts
 {
-    interface IVacancyApplicationRepository: IRepositoryBase<Vacancy_Application>
+  public  interface IVacancyApplicationRepository: IRepositoryBase<Vacancy_Application>
     {
     }
 }

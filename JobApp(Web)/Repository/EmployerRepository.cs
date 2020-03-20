@@ -9,6 +9,11 @@ namespace JobApp_Web_.Repository
 {
     public class EmployerRepository : IEmployerRepository
     {
+        private readonly ApplicationDbContext _db;
+        public EmployerRepository()
+        {
+                
+        }
         public bool Create(Employer Entity)
         {
             throw new NotImplementedException();
