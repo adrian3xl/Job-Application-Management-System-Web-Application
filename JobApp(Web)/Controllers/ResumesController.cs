@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using JobApp_Web_.Contracts;
+using JobApp_Web_.Data;
+using JobApp_Web_.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +26,8 @@ namespace JobApp_Web_.Controllers
         // GET: Resumes
         public ActionResult Index()
         {
+            var Resumes = _repo.FindAll().ToList();
+            var model = _mapper.Map<List<Resume>, List<ResumeVM>>(Resumes);
             return View();
         }
 
