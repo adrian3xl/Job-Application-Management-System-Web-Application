@@ -40,7 +40,7 @@ namespace JobApp_Web_
             services.AddScoped<IVacancyRepository, VacancyRepository>();
             services.AddScoped<IVacancyApplicationRepository, Vacancy_ApplicationRepository>();
 
-            services.AddAutoMapper(typeof(Maps))
+            services.AddAutoMapper(typeof(Maps));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
