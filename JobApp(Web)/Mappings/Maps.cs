@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace JobApp_Web_.Mappings
 {
-    public class Mapper: Profile
+    public class Maps: Profile
     {
-        public Mapper()
+        public Maps()
         {
             CreateMap<vacancy, VacancyVM>().ReverseMap();
             CreateMap<vacancy, CreateVacancyVM>().ReverseMap();

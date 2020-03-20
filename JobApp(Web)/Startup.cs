@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using JobApp_Web_.Contracts;
 using JobApp_Web_.Repository;
+using AutoMapper;
+using JobApp_Web_.Mappings;
 
 namespace JobApp_Web_
 {
@@ -37,6 +39,8 @@ namespace JobApp_Web_
             services.AddScoped<IResumeRepository, ResumeRepository>();
             services.AddScoped<IVacancyRepository, VacancyRepository>();
             services.AddScoped<IVacancyApplicationRepository, Vacancy_ApplicationRepository>();
+
+            services.AddAutoMapper(typeof(Maps))
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
