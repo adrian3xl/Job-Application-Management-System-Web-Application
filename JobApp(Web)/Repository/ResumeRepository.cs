@@ -17,32 +17,39 @@ namespace JobApp_Web_.Repository
 
         public bool Create(Resume Entity)
         {
-            throw new NotImplementedException();
+            _db.Resumes.Add(Entity);
+            return Save();
         }
 
         public bool Delete(Resume Entity)
         {
-            throw new NotImplementedException();
+            _db.Resumes.Remove(Entity);
+            return Save();
         }
 
         public ICollection<Resume> FindAll()
         {
-            throw new NotImplementedException();
+            var Resumes = _db.Resumes.ToList();
+            return Resumes;
         }
 
         public Resume FindById(int id)
         {
-            throw new NotImplementedException();
+            var Resume = _db.Resumes.Find(id);
+
+            return Resume;
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var changes = _db.SaveChanges();
+            return changes > 0;
         }
 
         public bool Update(Resume Entity)
         {
-            throw new NotImplementedException();
+            _db.Resumes.Update(Entity);
+            return Save();
         }
     }
 }

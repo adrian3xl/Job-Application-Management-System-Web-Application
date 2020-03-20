@@ -19,29 +19,36 @@ namespace JobApp_Web_.Repository
             throw new NotImplementedException();
         }
 
+
         public bool Delete(Employer Entity)
         {
-            throw new NotImplementedException();
+            _db.Employers.Remove(Entity);
+            return Save();
         }
 
         public ICollection<Employer> FindAll()
         {
-            throw new NotImplementedException();
+            var Employers = _db.Employers.ToList();
+            return Employers;
         }
 
         public Employer FindById(int id)
         {
-            throw new NotImplementedException();
+            var Employers = _db.Employers.Find(id);
+
+            return Employers;
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var changes = _db.SaveChanges();
+            return changes > 0;
         }
 
         public bool Update(Employer Entity)
         {
-            throw new NotImplementedException();
+            _db.Employers.Update(Entity);
+            return Save();
         }
     }
 }

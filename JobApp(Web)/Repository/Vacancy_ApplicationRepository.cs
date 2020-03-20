@@ -16,32 +16,39 @@ namespace JobApp_Web_.Repository
         }
         public bool Create(Vacancy_Application Entity)
         {
-            throw new NotImplementedException();
+            _db.Vacancy_Applications.Add(Entity);
+            return Save();
         }
 
         public bool Delete(Vacancy_Application Entity)
         {
-            throw new NotImplementedException();
+            _db.Vacancy_Applications.Remove(Entity);
+            return Save();
         }
 
         public ICollection<Vacancy_Application> FindAll()
         {
-            throw new NotImplementedException();
+         var Vacancy_Applications = _db.Vacancy_Applications.ToList();
+            return Vacancy_Applications;
         }
 
         public Vacancy_Application FindById(int id)
         {
-            throw new NotImplementedException();
+            var Vacancy_Application = _db.Vacancy_Applications.Find(id);
+
+            return Vacancy_Application;
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var changes = _db.SaveChanges();
+            return changes > 0;
         }
 
         public bool Update(Vacancy_Application Entity)
         {
-            throw new NotImplementedException();
+            _db.Vacancy_Applications.Update(Entity);
+            return Save();
         }
     }
 }

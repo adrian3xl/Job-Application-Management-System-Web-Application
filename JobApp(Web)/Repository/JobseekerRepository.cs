@@ -18,32 +18,40 @@ namespace JobApp_Web_.Repository
 
         public bool Create(Jobseeker Entity)
         {
-            throw new NotImplementedException();
+            _db.Jobseeker.Add(Entity);
+            return Save();
         }
+
 
         public bool Delete(Jobseeker Entity)
         {
-            throw new NotImplementedException();
+            _db.Jobseeker.Remove(Entity);
+            return Save();
         }
 
         public ICollection<Jobseeker> FindAll()
         {
-            throw new NotImplementedException();
+            var Jobseeker = _db.Jobseeker.ToList();
+            return Jobseeker;
         }
 
         public Jobseeker FindById(int id)
         {
-            throw new NotImplementedException();
+            var Jobseeker = _db.Jobseeker.Find(id);
+
+            return Jobseeker;
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var changes = _db.SaveChanges();
+            return changes > 0;
         }
 
         public bool Update(Jobseeker Entity)
         {
-            throw new NotImplementedException();
+            _db.Jobseeker.Update(Entity);
+            return Save();
         }
     }
 }
