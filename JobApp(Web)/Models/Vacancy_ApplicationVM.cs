@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,5 +19,8 @@ namespace JobApp_Web_.Models
         public int Vacancy_request_id { get; set; }
 
         public string Application_status { get; set; }
+
+        public IEnumerable<SelectListItem> Vacancy_requests { get; set; }
+        public IEnumerable<SelectListItem> Resume_requests { get; set; }
     }
 }

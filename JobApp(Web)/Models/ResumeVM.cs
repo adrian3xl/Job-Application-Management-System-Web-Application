@@ -1,4 +1,5 @@
 ﻿using JobApp_Web_.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -52,5 +53,7 @@ namespace JobApp_Web_.Models
         public JobseekerVM Jobseeker { get; set; }
 
         public string Jobseeker_Id { get; set; }
+
+        public IEnumerable<SelectListItem> Jobseekers { get; set; }
     }
 }
