@@ -42,6 +42,11 @@ namespace JobApp_Web_.Repository
             return Jobseeker;
         }
 
+        public bool IsExist(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Save()
         {
             var changes = _db.SaveChanges();

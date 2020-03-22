@@ -11,6 +11,7 @@ namespace JobApp_Web_.Contracts
 
         T FindById(int id);
 
+        bool IsExist(int id);
         bool Create(T Entity);
         bool Update(T Entity);
         bool Delete(T Entity);

@@ -34,7 +34,13 @@ namespace JobApp_Web_.Controllers
         // GET: Resumes/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (_repo.IsExist(id))
+            {
+                return NotFound();
+            }
+            var resume = _repo.FindById(id);
+            var model = _mapper.Map<ResumeVM>(resume);
+            return View(model);
         }
 
         // GET: Resumes/Create
@@ -73,24 +79,42 @@ namespace JobApp_Web_.Controllers
 
         // GET: Resumes/Edit/5
         public ActionResult Edit(int id)
+
         {
-            return View();
+            if (!_repo.IsExist(id))
+            {
+                return NotFound();
+            }
+            var resume = _repo.FindById(id);
+            var model = _mapper.Map<ResumeVM>(resume);
+            return View(model);
         }
 
         // POST: Resumes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ResumeVM model)
         {
             try
             {
-                // TODO: Add update logic here
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var resume = _mapper.Map<Resume>(model);
+                var isSucess = _repo.Create(resume);
+                if (!isSucess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                    return View(model);
+                }
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Something went wrong...");
+                return View(model);
             }
         }
 
