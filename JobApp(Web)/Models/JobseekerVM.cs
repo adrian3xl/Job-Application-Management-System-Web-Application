@@ -12,7 +12,7 @@ namespace JobApp_Web_.Models
         public string Firstname { get; set; }
         [Required]
         public string Lastname { get; set; }
-        [Required]
-        public DateTime DateOfBirth { get; set; }
+       
+        public DateTime? DateOfBirth { get; set; }
     }
 }
