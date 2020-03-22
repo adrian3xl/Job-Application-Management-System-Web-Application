@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using JobApp_Web_.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -104,7 +105,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new Employer { UserName = Input.Company_name, Email = Input.Email,Company_name=Input.Company_name,Company_background=Input.Company_background,Workforce_number=Input.Workforce_number,Company_locatiion=Input.Company_locatiion,Industry_type=Input.Industry_type,Campany_contact_number=Input.Campany_contact_number };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

@@ -93,7 +93,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Jobseeker { UserName = Input.UserName, Email = Input.Email, };
+                var user = new Jobseeker { UserName = Input.UserName, Email = Input.Email, Firstname=Input.Firstname, Lastname=Input.Lastname, DateOfBirth=Input.DateOfBirth };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
