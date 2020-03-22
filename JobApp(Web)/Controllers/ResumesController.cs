@@ -28,7 +28,7 @@ namespace JobApp_Web_.Controllers
         {
             var Resumes = _repo.FindAll().ToList();
             var model = _mapper.Map<List<Resume>, List<ResumeVM>>(Resumes);
-            return View();
+            return View(model);
         }
 
         // GET: Resumes/Details/5
