@@ -1,39 +1,35 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
-namespace JobApp_Web_.Areas.Identity.Pages.Account
+namespace JobApp_Web_.Areas.Identity.Pages.Account.Manage
 {
     [AllowAnonymous]
-    public class RegisterModel : PageModel
+    public class Register_EmployerModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
-  
 
-        public RegisterModel(
+
+        public Register_EmployerModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger)
-           
+
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-           
+
         }
 
         [BindProperty]
@@ -60,6 +56,31 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+          
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name ="Company Name")]
+            public string Company_name { get; set; }
+
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Company Background ")]
+            public string Company_background { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Company Locatiion ")]
+            public string Company_locatiion { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = " Campany Contact Number ")]
+            public string Campany_contact_number { get; set; }
+            public int Workforce_number { get; set; }
+            public string Company_Email { get; set; }
+            public string Industry_type { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -80,10 +101,10 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                 
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
+
                 }
                 foreach (var error in result.Errors)
                 {
