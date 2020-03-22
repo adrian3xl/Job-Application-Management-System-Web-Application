@@ -34,6 +34,7 @@ namespace JobApp_Web_
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddScoped<IEmployerRepository, EmployerRepository>();
             services.AddScoped<IJobseekerRepository, JobseekerRepository>();
             services.AddScoped<IResumeRepository, ResumeRepository>();
@@ -43,13 +44,22 @@ namespace JobApp_Web_
             services.AddAutoMapper(typeof(Maps));
 
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
+
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure
+            (IApplicationBuilder app,
+            IWebHostEnvironment env,
+            UserManager<IdentityUser>userManager,
+            RoleManager<IdentityRole>roleManager
+            )
         {
             if (env.IsDevelopment())
             {
