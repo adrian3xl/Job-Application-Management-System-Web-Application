@@ -11,6 +11,6 @@ namespace JobApp_Web_.Data
         public string Lastname { get; set; }
 
        
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 }

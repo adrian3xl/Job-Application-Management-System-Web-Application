@@ -80,6 +80,8 @@ namespace JobApp_Web_
             app.UseAuthentication();
             app.UseAuthorization();
 
+            SeedData.Seed(userManager, roleManager);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

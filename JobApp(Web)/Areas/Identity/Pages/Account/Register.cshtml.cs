@@ -69,7 +69,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
 
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "First Name")]
+            [Display(Name = "Last Name")]
             public string Lastname { get; set; }
 
             [Display(Name = "Date of Birth")]
@@ -97,6 +97,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    _userManager.AddToRoleAsync(user, "Jobseeker").Wait();
                     _logger.LogInformation("User created a new account with password.");
 
                  

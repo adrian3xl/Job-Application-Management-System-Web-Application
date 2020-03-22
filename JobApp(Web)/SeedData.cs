@@ -11,10 +11,11 @@ namespace JobApp_Web_
         public static void Seed(UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
-
+            SeedRoles(roleManager);
+            SeedUser(userManager);
         }
 
-        public static void SeedUser(UserManager<IdentityUser> userManager)
+        private static void SeedUser(UserManager<IdentityUser> userManager)
         {
             if (userManager.FindByNameAsync("Employer").Result == null)
             {
@@ -24,10 +25,14 @@ namespace JobApp_Web_
                     Email = "employerlocalhost"
                 };
                 var result = userManager.CreateAsync(user, "P@ssword1").Result;
+                if (result.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user, "Employer").Wait();
+                }
             }
         }
 
-        public static void SeedRoles(RoleManager<IdentityRole> roleManager)
+       private static void SeedRoles(RoleManager<IdentityRole> roleManager)
         {
             if (!roleManager.RoleExistsAsync("Employer").Result)
             {
@@ -35,7 +40,7 @@ namespace JobApp_Web_
                 {
                     Name="Employer"
                 };
-                roleManager.CreateAsync(role);
+               var result= roleManager.CreateAsync(role).Result;
             }
 
            if (!roleManager.RoleExistsAsync("Jobseeker").Result){
@@ -44,7 +49,7 @@ namespace JobApp_Web_
                 {
                     Name = "Jobseeker"
                 };
-                roleManager.CreateAsync(role);
+                var result = roleManager.CreateAsync(role).Result;
 
             }
             
