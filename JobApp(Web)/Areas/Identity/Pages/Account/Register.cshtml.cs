@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using JobApp_Web_.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -60,6 +61,24 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string Firstname { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string Lastname { get; set; }
+
+            [Display(Name = "Date of Birth")]
+            [DataType(DataType.DateTime)]
+            public DateTime DateOfBirth { get; set; }
+
+            [Display(Name = "User Name")]
+            [DataType(DataType.Text)]
+            public string UserName { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -74,7 +93,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new Jobseeker { UserName = Input.UserName, Email = Input.Email, };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

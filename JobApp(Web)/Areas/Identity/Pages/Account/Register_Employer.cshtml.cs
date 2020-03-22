@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace JobApp_Web_.Areas.Identity.Pages.Account.Manage
+namespace JobApp_Web_.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class Register_EmployerModel : PageModel
