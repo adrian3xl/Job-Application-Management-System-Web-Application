@@ -43,7 +43,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Company Email")]
             public string Email { get; set; }
 
             [Required]
@@ -78,8 +78,17 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account.Manage
             [DataType(DataType.Text)]
             [Display(Name = " Campany Contact Number ")]
             public string Campany_contact_number { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = " Workforce Number ")]
             public int Workforce_number { get; set; }
+
             public string Company_Email { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = " Industry Type ")]
             public string Industry_type { get; set; }
         }
 
