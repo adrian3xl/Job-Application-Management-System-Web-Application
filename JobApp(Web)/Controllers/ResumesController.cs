@@ -121,23 +121,44 @@ namespace JobApp_Web_.Controllers
         // GET: Resumes/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var resume = _repo.FindById(id);
+            if (resume == null)
+            {
+                return NotFound();
+            }
+            var isSucess = _repo.Delete(resume);
+            if (!isSucess)
+            {
+
+                return BadRequest();
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: Resumes/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id,ResumeVM model)
         {
             try
             {
-                // TODO: Add delete logic here
+                var resume = _repo.FindById(id);
+                if (resume == null){
+                    return NotFound();
+                }
+                var isSucess = _repo.Delete(resume);
+                if (!isSucess)
+                {
+                   
+                    return View(model);
+                }
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
     }
