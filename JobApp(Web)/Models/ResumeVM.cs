@@ -35,31 +35,5 @@ namespace JobApp_Web_.Models
 
         public string Jobseeker_Id { get; set; }
     }
-    public class CreateResumeVM
-    {
-
-        [Required]
-        [Display(Name = " Education Level")]
-        public int Education_level { get; set; }
-        [Required]
-        public string Qualifications { get; set; }
-        [Required]
-        [Display(Name = "Prior Work Experiences")]
-        public string PriorWork_Experiences { get; set; }
-        [Required]
-        public string Hobbies { get; set; }
-        [Required]
-        [Display(Name = "Contact Number")]
-        public string Contact_number { get; set; }
-        [Required]
-        public string Email { get; set; }
-
-        [Required]
-       
-        public JobseekerVM Jobseeker { get; set; }
-
-        public string Jobseeker_Id { get; set; }
-
-        public IEnumerable<SelectListItem> Jobseekers { get; set; }
-    }
+   
 }

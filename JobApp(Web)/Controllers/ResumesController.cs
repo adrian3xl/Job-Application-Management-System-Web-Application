@@ -46,17 +46,28 @@ namespace JobApp_Web_.Controllers
         // POST: Resumes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(IFormCollection model)
         {
             try
             {
-                // TODO: Add insert logic here
+              if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+              
+                var resume = _mapper.Map<Resume>(model);
+              var isSucess=  _repo.Create(resume);
+                if (!isSucess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                }
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Something went wrong...");
+                return View(model);
             }
         }
 
