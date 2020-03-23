@@ -73,7 +73,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
             public string Lastname { get; set; }
 
             [Display(Name = "Date of Birth")]
-            [DataType(DataType.DateTime)]
+            [DataType(DataType.Date)]
             public DateTime DateOfBirth { get; set; }
 
             [Display(Name = "User Name")]
