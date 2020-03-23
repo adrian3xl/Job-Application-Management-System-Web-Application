@@ -40,10 +40,11 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public class InputModel
+        public class InputModel 
         {
             [Required]
             [EmailAddress]
+            [DataType(DataType.Text)]
             public string Email { get; set; }
 
             [Required]

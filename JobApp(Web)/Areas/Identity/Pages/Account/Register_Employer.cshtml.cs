@@ -101,11 +101,11 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Employer { UserName = Input.Company_name, Email = Input.Email,Company_name=Input.Company_name.Trim(),Company_background=Input.Company_background,Workforce_number=Input.Workforce_number,Company_locatiion=Input.Company_locatiion,Industry_type=Input.Industry_type,Campany_contact_number=Input.Campany_contact_number };
+                var user = new Employer { UserName = Input.Email, Email = Input.Email,Company_name=Input.Company_name,Company_background=Input.Company_background,Workforce_number=Input.Workforce_number,Company_locatiion=Input.Company_locatiion,Industry_type=Input.Industry_type,Campany_contact_number=Input.Campany_contact_number };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using JobApp_Web_.Contracts;
 using JobApp_Web_.Data;
 using JobApp_Web_.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JobApp_Web_.Controllers
 {
+    [Authorize]
     public class ResumesController : Controller
     {
 
         private readonly IResumeRepository _repo;
         private readonly IMapper _mapper;
 
-        public ResumesController(IResumeRepository repo , IMapper mapper)
+        public ResumesController(IResumeRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
@@ -56,13 +56,13 @@ namespace JobApp_Web_.Controllers
         {
             try
             {
-              if (!ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
                     return View(model);
                 }
-              
+
                 var resume = _mapper.Map<Resume>(model);
-              var isSucess=  _repo.Create(resume);
+                var isSucess = _repo.Create(resume);
                 if (!isSucess)
                 {
                     ModelState.AddModelError("", "Something went wrong...");
@@ -139,18 +139,19 @@ namespace JobApp_Web_.Controllers
         // POST: Resumes/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id,ResumeVM model)
+        public ActionResult Delete(int id, ResumeVM model)
         {
             try
             {
                 var resume = _repo.FindById(id);
-                if (resume == null){
+                if (resume == null)
+                {
                     return NotFound();
                 }
                 var isSucess = _repo.Delete(resume);
                 if (!isSucess)
                 {
-                   
+
                     return View(model);
                 }
 
