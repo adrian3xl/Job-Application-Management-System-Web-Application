@@ -13,7 +13,6 @@ namespace JobApp_Web_.Mappings
         public Maps()
         {
             CreateMap<vacancy, VacancyVM>().ReverseMap();
-
             CreateMap<Jobseeker, JobseekerVM>().ReverseMap();
             CreateMap<Resume, ResumeVM>().ReverseMap();
             CreateMap<Employer, EmployerVM>().ReverseMap();

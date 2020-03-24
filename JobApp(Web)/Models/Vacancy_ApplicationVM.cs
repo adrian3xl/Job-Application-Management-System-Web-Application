@@ -9,6 +9,7 @@ namespace JobApp_Web_.Models
 {
     public class Vacancy_ApplicationVM
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public ResumeVM Resume_request { get; set; }
