@@ -22,13 +22,13 @@ namespace JobApp_Web_.Models
         public DateTime Submit_deadline { get; set; }
         public string Job_category { get; set; }
 
-        [Required]
+       
         [ForeignKey("Employer_Id")]
         public EmployerVM Employer { get; set; }
         public string Employer_Id { get; set; }
 
-       // [Key]
-      //  public IEnumerable<SelectListItem> Employers { get; set; }
+      // [Key]
+      // public IEnumerable<SelectListItem> Employers { get; set; }
     }
 
 
