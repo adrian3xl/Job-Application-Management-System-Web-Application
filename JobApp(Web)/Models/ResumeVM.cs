@@ -11,7 +11,7 @@ namespace JobApp_Web_.Models
 {
     public class ResumeVM
     {
-
+        [Key]
         public int Id { get; set; }
         [Required]
         [Display(Name = " Education Level")]

@@ -44,6 +44,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
         {
             [Required]
             //[EmailAddress]
+            [Display(Name = "User Name")]
             [DataType(DataType.Text)]
             public string Email { get; set; }
 

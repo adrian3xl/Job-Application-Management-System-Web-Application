@@ -6,11 +6,13 @@ using AutoMapper;
 using JobApp_Web_.Contracts;
 using JobApp_Web_.Data;
 using JobApp_Web_.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobApp_Web_.Controllers
 {
+    [Authorize]
     public class VacanciesController : Controller
     {
 
