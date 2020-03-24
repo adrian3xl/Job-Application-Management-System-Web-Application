@@ -43,7 +43,7 @@ namespace JobApp_Web_.Areas.Identity.Pages.Account
         public class InputModel 
         {
             [Required]
-            [EmailAddress]
+            //[EmailAddress]
             [DataType(DataType.Text)]
             public string Email { get; set; }
 
