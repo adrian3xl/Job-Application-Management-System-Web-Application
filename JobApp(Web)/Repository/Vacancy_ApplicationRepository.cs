@@ -41,7 +41,7 @@ namespace JobApp_Web_.Repository
 
         public bool IsExist(int id)
         {
-            var exists = _db.Resumes.Any(q => q.Id == id);
+            var exists = _db.Vacancy_Applications.Any(q => q.Id == id);
             return exists;
         }
 
