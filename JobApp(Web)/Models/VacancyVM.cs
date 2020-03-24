@@ -9,7 +9,8 @@ namespace JobApp_Web_.Models
 {
     public class VacancyVM
     {
-       
+       [Key]
+
         public int Id { get; set; }
         [Required]
         public string Job_title { get; set; }
