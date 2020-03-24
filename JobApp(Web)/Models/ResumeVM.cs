@@ -29,7 +29,7 @@ namespace JobApp_Web_.Models
         [Required]
         public string Email { get; set; }
        
-        [Required]
+      
         [ForeignKey("Jobseeker_Id")]
         public Jobseeker Jobseeker { get; set; }
 

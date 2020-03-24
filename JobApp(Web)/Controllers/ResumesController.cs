@@ -66,6 +66,7 @@ namespace JobApp_Web_.Controllers
                 if (!isSucess)
                 {
                     ModelState.AddModelError("", "Something went wrong...");
+                    return View(model);
                 }
 
                 return RedirectToAction(nameof(Index));
