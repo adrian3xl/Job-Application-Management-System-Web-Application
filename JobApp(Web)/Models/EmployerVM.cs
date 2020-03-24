@@ -9,6 +9,7 @@ namespace JobApp_Web_.Models
     public class EmployerVM
     {
         [Required]
+        public string Id { get; set; }
         public string Company_name { get; set; }
         [Required]
         public string Company_background { get; set; }

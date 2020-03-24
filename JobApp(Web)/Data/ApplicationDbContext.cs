@@ -20,6 +20,7 @@ namespace JobApp_Web_.Data
         public DbSet<vacancy> Vacancies { get; set; }
         public DbSet<Vacancy_Application> Vacancy_Applications { get; set; }
         public DbSet<JobApp_Web_.Models.ResumeVM> ResumeVM { get; set; }
+        public DbSet<JobApp_Web_.Models.VacancyVM> VacancyVM { get; set; }
 
     }
 }

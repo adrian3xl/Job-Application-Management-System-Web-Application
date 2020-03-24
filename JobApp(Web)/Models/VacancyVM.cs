@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,11 +22,13 @@ namespace JobApp_Web_.Models
         public DateTime Submit_deadline { get; set; }
         public string Job_category { get; set; }
 
-       
+        [Required]
+        [ForeignKey("Employer_Id")]
         public EmployerVM Employer { get; set; }
         public string Employer_Id { get; set; }
 
-        public IEnumerable<SelectListItem> Employers { get; set; }
+       // [Key]
+      //  public IEnumerable<SelectListItem> Employers { get; set; }
     }
 
 
