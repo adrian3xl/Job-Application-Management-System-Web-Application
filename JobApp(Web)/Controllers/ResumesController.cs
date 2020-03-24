@@ -52,7 +52,7 @@ namespace JobApp_Web_.Controllers
         // POST: Resumes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection model)
+        public ActionResult Create(ResumeVM model)
         {
             try
             {

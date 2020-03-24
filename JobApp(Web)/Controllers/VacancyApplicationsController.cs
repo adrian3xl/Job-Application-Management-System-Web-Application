@@ -51,7 +51,7 @@ namespace JobApp_Web_.Controllers
         // POST: VacancyApplications/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection model)
+        public ActionResult Create(Vacancy_ApplicationVM model)
         {
             try
             {
