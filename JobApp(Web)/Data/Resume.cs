@@ -7,7 +7,7 @@ namespace JobApp_Web_.Data
     {
         [Key]
         public int Id { get; set; }
-        public int Education_level { get; set; }
+        public string Education_level { get; set; }
         public string Qualifications { get; set; }
         public string PriorWork_Experiences { get; set; }
         public string Hobbies { get; set; }

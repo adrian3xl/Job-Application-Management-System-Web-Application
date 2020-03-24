@@ -15,7 +15,7 @@ namespace JobApp_Web_.Models
         public int Id { get; set; }
         [Required]
         [Display(Name = " Education Level")]
-        public int Education_level { get; set; }
+        public string Education_level { get; set; }
         [Required]
         public string Qualifications { get; set; }
         [Required]

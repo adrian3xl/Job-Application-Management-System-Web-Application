@@ -28,7 +28,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                       
+
 
                         @if (SignInManager.IsSignedIn(User))
                         {
@@ -50,21 +50,25 @@
 
 
                             }
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                if (User.IsInRole("Employer"))
+                                {
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Manage Vacancy
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" asp-controller="Vacancy" asp-action="Index">View Vacancy</a>
-                                    <a class="dropdown-item" asp-controller="Vacancy" asp-action="Create">Create Vacancy</a>
-                                    <a class="dropdown-item" asp-controller="Vacancy" asp-action="Edit">Edit Vacancy</a>
-                                    <a class="dropdown-item" asp-controller="Vacancy" asp-action="Delete">Delete Vacancy</a>
-                                </div>
-                            </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Manage Vacancy
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" asp-controller="Vacancies" asp-action="Index">View Vacancy</a>
+                                            <a class="dropdown-item" asp-controller="Vacancies" asp-action="Create">Create Vacancy</a>
+                                            <a class="dropdown-item" asp-controller="Vacancies" asp-action="Edit">Edit Vacancy</a>
+                                            <a class="dropdown-item" asp-controller="Vacancies" asp-action="Delete">Delete Vacancy</a>
+                                        </div>
+                                    </li>
 
-
-
+                                }
+                            }
                         }
                     </ul>
                 </div>
