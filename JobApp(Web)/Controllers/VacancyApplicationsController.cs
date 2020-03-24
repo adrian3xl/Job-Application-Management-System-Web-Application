@@ -33,7 +33,13 @@ namespace JobApp_Web_.Controllers
         // GET: VacancyApplications/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (_repo.IsExist(id))
+            {
+                return NotFound();
+            }
+            var vacancy_Application = _repo.FindById(id);
+            var model = _mapper.Map<Vacancy_ApplicationVM> (vacancy_Application);
+            return View(model);
         }
 
         // GET: VacancyApplications/Create
@@ -45,63 +51,113 @@ namespace JobApp_Web_.Controllers
         // POST: VacancyApplications/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(IFormCollection model)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                var vacancy_Application = _mapper.Map<Vacancy_Application>(model);
+                var isSucess = _repo.Create(vacancy_Application);
+                if (!isSucess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                }
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Something went wrong...");
+                return View(model);
             }
         }
 
         // GET: VacancyApplications/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (!_repo.IsExist(id))
+            {
+                return NotFound();
+            }
+            var vacancy_Application = _repo.FindById(id);
+            var model = _mapper.Map<Vacancy_ApplicationVM>(vacancy_Application);
+            return View(model);
         }
 
         // POST: VacancyApplications/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Vacancy_ApplicationVM model)
         {
             try
             {
-                // TODO: Add update logic here
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var vacancy_Application = _mapper.Map<Vacancy_Application>(model);
+                var isSucess = _repo.Create(vacancy_Application);
+                if (!isSucess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                    return View(model);
+                }
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Something went wrong...");
+                return View(model);
             }
         }
 
         // GET: VacancyApplications/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var vacancy_Application = _repo.FindById(id);
+            if (vacancy_Application == null)
+            {
+                return NotFound();
+            }
+            var isSucess = _repo.Delete(vacancy_Application);
+            if (!isSucess)
+            {
+
+                return BadRequest();
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: VacancyApplications/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id,Vacancy_ApplicationVM model)
         {
             try
             {
-                // TODO: Add delete logic here
+                var Vacancy_Application = _repo.FindById(id);
+                if (Vacancy_Application == null)
+                {
+                    return NotFound();
+                }
+                var isSucess = _repo.Delete(Vacancy_Application);
+                if (!isSucess)
+                {
+
+                    return View(model);
+                }
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
     }
