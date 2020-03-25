@@ -105,7 +105,7 @@ namespace JobApp_Web_.Controllers
                     return View(model);
                 }
                 var Vacancy = _mapper.Map<vacancy>(model);
-                var isSucess = _repo.Create(Vacancy);
+                var isSucess = _repo.Update(Vacancy);
                 if (!isSucess)
                 {
                     ModelState.AddModelError("", "Something went wrong...");
