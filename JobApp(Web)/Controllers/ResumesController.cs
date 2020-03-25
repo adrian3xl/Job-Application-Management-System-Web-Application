@@ -34,7 +34,7 @@ namespace JobApp_Web_.Controllers
         // GET: Resumes/Details/5
         public ActionResult Details(int id)
         {
-            if (_repo.IsExist(id))
+            if (!_repo.IsExist(id))
             {
                 return NotFound();
             }
@@ -62,6 +62,7 @@ namespace JobApp_Web_.Controllers
                 }
 
                 var resume = _mapper.Map<Resume>(model);
+             // var Jobseeker_Id = resume.Jobseeker.Id;
                 var isSucess = _repo.Create(resume);
                 if (!isSucess)
                 {
@@ -103,7 +104,9 @@ namespace JobApp_Web_.Controllers
                     return View(model);
                 }
                 var resume = _mapper.Map<Resume>(model);
-                var isSucess = _repo.Create(resume);
+           
+               
+                var isSucess = _repo.Update(resume);
                 if (!isSucess)
                 {
                     ModelState.AddModelError("", "Something went wrong...");
