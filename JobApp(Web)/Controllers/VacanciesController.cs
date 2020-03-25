@@ -63,6 +63,9 @@ namespace JobApp_Web_.Controllers
                     return View(model);
                 }
 
+                model.EmployerId = "";
+
+
                 var vacancy = _mapper.Map<vacancy>(model);
                 var isSucess = _repo.Create(vacancy);
                 if (!isSucess)

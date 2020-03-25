@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using JobApp_Web_.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +11,6 @@ namespace JobApp_Web_.Models
 {
     public class VacancyVM
     {
-       [Key]
 
         public int Id { get; set; }
         [Required]
@@ -25,7 +25,7 @@ namespace JobApp_Web_.Models
        
       //  [ForeignKey("Employer_Id")]
         public EmployerVM Employer { get; set; }
-        public string Employer_Id { get; set; }
+        public string EmployerId { get; set; }
 
       // [Key]
       // public IEnumerable<SelectListItem> Employers { get; set; }

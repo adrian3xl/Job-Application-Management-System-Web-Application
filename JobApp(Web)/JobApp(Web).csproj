@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\JobApplication\**" />
+    <Content Remove="Views\JobApplication\**" />
+    <EmbeddedResource Remove="Views\JobApplication\**" />
+    <None Remove="Views\JobApplication\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Data\Migrations\20200318132535_ApplicationDetailsTable.cs" />
     <Compile Remove="Data\Migrations\20200318132535_ApplicationDetailsTable.Designer.cs" />
   </ItemGroup>
@@ -21,11 +28,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Views\JobApplication\" />
   </ItemGroup>
 
 </Project>

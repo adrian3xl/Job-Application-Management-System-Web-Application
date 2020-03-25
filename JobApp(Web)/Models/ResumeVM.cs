@@ -11,7 +11,6 @@ namespace JobApp_Web_.Models
 {
     public class ResumeVM
     {
-        [Key]
         public int Id { get; set; }
         [Required]
         [Display(Name = " Education Level")]
@@ -31,7 +30,7 @@ namespace JobApp_Web_.Models
        
       
       //  [ForeignKey("Jobseeker_Id")]
-        public JobseekerVM Jobseeker { get; set; }
+        public Jobseeker Jobseeker { get; set; }
 
         public string Jobseeker_Id { get; set; }
     }
