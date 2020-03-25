@@ -16,7 +16,7 @@ namespace JobApp_Web_.Data
         public DateTime Submit_deadline { get; set; }
         public string Job_category { get; set; }
 
-        [ForeignKey("Employer_Id")]
+     //   [ForeignKey("Employer_Id")]
         public Employer Employer { get; set; }
         public string Employer_Id { get; set; }
     }

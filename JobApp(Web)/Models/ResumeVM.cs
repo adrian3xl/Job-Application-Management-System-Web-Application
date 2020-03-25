@@ -30,8 +30,8 @@ namespace JobApp_Web_.Models
         public string Email { get; set; }
        
       
-        [ForeignKey("Jobseeker_Id")]
-        public Jobseeker Jobseeker { get; set; }
+      //  [ForeignKey("Jobseeker_Id")]
+        public JobseekerVM Jobseeker { get; set; }
 
         public string Jobseeker_Id { get; set; }
     }

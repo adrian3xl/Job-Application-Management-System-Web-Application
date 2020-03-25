@@ -19,11 +19,11 @@ namespace JobApp_Web_.Models
         public string Job_Requirements { get; set; }
         public int Job_level { get; set; }
         public string Employment_type { get; set; }
-        public DateTime Submit_deadline { get; set; }
+        public DateTime? Submit_deadline { get; set; }
         public string Job_category { get; set; }
 
        
-        [ForeignKey("Employer_Id")]
+      //  [ForeignKey("Employer_Id")]
         public EmployerVM Employer { get; set; }
         public string Employer_Id { get; set; }
 

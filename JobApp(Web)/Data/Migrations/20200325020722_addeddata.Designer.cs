@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobApp_Web_.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200318171916_Application_tablesDetails")]
-    partial class Application_tablesDetails
+    [Migration("20200325020722_addeddata")]
+    partial class addeddata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,8 +31,8 @@ namespace JobApp_Web_.Data.Migrations
                     b.Property<string>("Contact_number")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Education_level")
-                        .HasColumnType("int");
+                    b.Property<string>("Education_level")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -58,7 +58,7 @@ namespace JobApp_Web_.Data.Migrations
 
             modelBuilder.Entity("JobApp_Web_.Data.Vacancy_Application", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -69,20 +69,20 @@ namespace JobApp_Web_.Data.Migrations
                     b.Property<int?>("Resume_requestId")
                         .HasColumnType("int");
 
-                    b.Property<int>("resume_request_id")
+                    b.Property<int>("Resume_request_id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("vacancy_requestId")
+                    b.Property<int?>("Vacancy_requestId")
                         .HasColumnType("int");
 
-                    b.Property<int>("vacancy_request_id")
+                    b.Property<int>("Vacancy_request_id")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("Resume_requestId");
 
-                    b.HasIndex("vacancy_requestId");
+                    b.HasIndex("Vacancy_requestId");
 
                     b.ToTable("Vacancy_Applications");
                 });
@@ -94,8 +94,11 @@ namespace JobApp_Web_.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Employer_Id")
+                    b.Property<string>("EmployerId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Employer_Id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Employment_type")
                         .HasColumnType("nvarchar(max)");
@@ -120,9 +123,129 @@ namespace JobApp_Web_.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Employer_Id");
+                    b.HasIndex("EmployerId");
 
                     b.ToTable("Vacancies");
+                });
+
+            modelBuilder.Entity("JobApp_Web_.Models.EmployerVM", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Campany_contact_number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company_Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company_background")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company_locatiion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Industry_type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Workforce_number")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployerVM");
+                });
+
+            modelBuilder.Entity("JobApp_Web_.Models.ResumeVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contact_number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Education_level")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hobbies")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobseekerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Jobseeker_Id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PriorWork_Experiences")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Qualifications")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobseekerId");
+
+                    b.ToTable("ResumeVM");
+                });
+
+            modelBuilder.Entity("JobApp_Web_.Models.VacancyVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EmployerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Employer_Id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Employment_type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Job_Discription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Job_Requirements")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Job_category")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Job_level")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Job_title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Submit_deadline")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployerId");
+
+                    b.ToTable("VacancyVM");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -338,9 +461,6 @@ namespace JobApp_Web_.Data.Migrations
                     b.Property<string>("Campany_contact_number")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Company_Email")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Company_background")
                         .HasColumnType("nvarchar(max)");
 
@@ -390,16 +510,30 @@ namespace JobApp_Web_.Data.Migrations
                         .WithMany()
                         .HasForeignKey("Resume_requestId");
 
-                    b.HasOne("JobApp_Web_.Data.vacancy", "vacancy_request")
+                    b.HasOne("JobApp_Web_.Data.vacancy", "Vacancy_request")
                         .WithMany()
-                        .HasForeignKey("vacancy_requestId");
+                        .HasForeignKey("Vacancy_requestId");
                 });
 
             modelBuilder.Entity("JobApp_Web_.Data.vacancy", b =>
                 {
                     b.HasOne("JobApp_Web_.Data.Employer", "Employer")
                         .WithMany()
-                        .HasForeignKey("Employer_Id");
+                        .HasForeignKey("EmployerId");
+                });
+
+            modelBuilder.Entity("JobApp_Web_.Models.ResumeVM", b =>
+                {
+                    b.HasOne("JobApp_Web_.Data.Jobseeker", "Jobseeker")
+                        .WithMany()
+                        .HasForeignKey("JobseekerId");
+                });
+
+            modelBuilder.Entity("JobApp_Web_.Models.VacancyVM", b =>
+                {
+                    b.HasOne("JobApp_Web_.Models.EmployerVM", "Employer")
+                        .WithMany()
+                        .HasForeignKey("EmployerId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
