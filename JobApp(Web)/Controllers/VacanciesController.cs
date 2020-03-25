@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JobApp_Web_.Controllers
 {
-    [Authorize]
+    [Authorize (Roles="Employer")]
     public class VacanciesController : Controller
     {
 

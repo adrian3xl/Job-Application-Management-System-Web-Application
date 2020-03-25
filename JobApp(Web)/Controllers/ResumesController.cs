@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace JobApp_Web_.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Jobseeker")]
     public class ResumesController : Controller
     {
 
