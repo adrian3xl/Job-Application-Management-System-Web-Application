@@ -20,19 +20,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.PriorWork_Experiences)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hobbies)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact_number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
+        
             <th>
                 @Html.DisplayNameFor(model => model.Jobseeker)
             </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -47,15 +39,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PriorWork_Experiences)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hobbies)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contact_number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Jobseeker.Id)
             </td>
