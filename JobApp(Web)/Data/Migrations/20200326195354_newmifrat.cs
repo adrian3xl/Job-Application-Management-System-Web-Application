@@ -2,7 +2,7 @@
 
 namespace JobApp_Web_.Data.Migrations
 {
-    public partial class addeddata : Migration
+    public partial class newmifrat : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

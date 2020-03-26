@@ -14,9 +14,9 @@ namespace JobApp_Web_.Data
         public string Contact_number { get; set; }
         public string Email { get; set; }
 
-        [ForeignKey("Jobseeker_Id")]
+        [ForeignKey("JobseekerId")]
         public Jobseeker Jobseeker { get; set; }
 
-        public string Jobseeker_Id { get; set; }
+        public string JobseekerId { get; set; }
     }
 }

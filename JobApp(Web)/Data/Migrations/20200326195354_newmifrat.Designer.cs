@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobApp_Web_.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200325020722_addeddata")]
-    partial class addeddata
+    [Migration("20200326195354_newmifrat")]
+    partial class newmifrat
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,7 @@ namespace JobApp_Web_.Data.Migrations
                     b.Property<string>("Hobbies")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Jobseeker_Id")
+                    b.Property<string>("JobseekerId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("PriorWork_Experiences")
@@ -51,7 +51,7 @@ namespace JobApp_Web_.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Jobseeker_Id");
+                    b.HasIndex("JobseekerId");
 
                     b.ToTable("Resumes");
                 });
@@ -96,9 +96,6 @@ namespace JobApp_Web_.Data.Migrations
 
                     b.Property<string>("EmployerId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Employer_Id")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Employment_type")
                         .HasColumnType("nvarchar(max)");
@@ -188,9 +185,6 @@ namespace JobApp_Web_.Data.Migrations
                     b.Property<string>("JobseekerId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Jobseeker_Id")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PriorWork_Experiences")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -215,9 +209,6 @@ namespace JobApp_Web_.Data.Migrations
 
                     b.Property<string>("EmployerId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Employer_Id")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Employment_type")
                         .HasColumnType("nvarchar(max)");
@@ -501,7 +492,7 @@ namespace JobApp_Web_.Data.Migrations
                 {
                     b.HasOne("JobApp_Web_.Data.Jobseeker", "Jobseeker")
                         .WithMany()
-                        .HasForeignKey("Jobseeker_Id");
+                        .HasForeignKey("JobseekerId");
                 });
 
             modelBuilder.Entity("JobApp_Web_.Data.Vacancy_Application", b =>
