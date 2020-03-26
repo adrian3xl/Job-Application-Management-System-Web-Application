@@ -35,7 +35,7 @@ namespace JobApp_Web_.Controllers
         // GET: Vacancies/Details/5
         public ActionResult Details(int id)
         {
-            if (_repo.IsExist(id))
+            if (!_repo.IsExist(id))
             {
                 return NotFound();
             }

@@ -15,28 +15,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Job_title)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Job_Discription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Job_Requirements)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Job_level)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employment_type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Submit_deadline)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Job_category)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Employer)
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -45,31 +28,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Job_title)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_Discription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_Requirements)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_level)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employment_type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Submit_deadline)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_category)
-            </td>
+        
             <td>
                 @Html.DisplayFor(modelItem => item.Employer.Id)
             </td>
             <td>
-                <a asp-action="Edit"  class="btn btn-warning" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details"  class="btn btn-secondary" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete"  class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit"  class="btn btn-warning" asp-route-id="@item.Id"><i class="fa fa-pencil" aria-hidden="true"></i> </a> |
+                <a asp-action="Detail"  class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-book" aria-hidden="true"></i> </a> |
+                <a asp-action="Delete"  class="btn btn-danger" asp-route-id="@item.Id"><i class="fa fa-trash" aria-hidden="true"></i> </a>
             </td>
         </tr>
 }
