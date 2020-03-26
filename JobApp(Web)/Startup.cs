@@ -42,12 +42,19 @@ namespace JobApp_Web_
             services.AddScoped<IVacancyApplicationRepository, Vacancy_ApplicationRepository>();
 
             services.AddAutoMapper(typeof(Maps));
+            
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
-
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddIdentityCore<Employer>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>(); 
+
+            services.AddIdentityCore<Jobseeker>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>(); 
 
             services.AddControllersWithViews();
             services.AddRazorPages();

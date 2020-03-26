@@ -8,6 +8,7 @@ using JobApp_Web_.Data;
 using JobApp_Web_.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobApp_Web_.Controllers
@@ -18,15 +19,22 @@ namespace JobApp_Web_.Controllers
 
         private readonly IVacancyRepository _repo;
         private readonly IMapper _mapper;
-        public VacanciesController(IVacancyRepository repo, IMapper mapper)
+        private readonly UserManager<Employer> _userManager;
+        public VacanciesController(IVacancyRepository repo, 
+            
+            IMapper mapper,
+            UserManager<Employer> userManager)
         {
             _repo = repo;
             _mapper = mapper;
+            _userManager = userManager;
 
         }
+
         // GET: Vacancies
         public ActionResult Index()
         {
+         
             var Vacancies = _repo.FindAll().ToList();
             var model = _mapper.Map<List<vacancy>, List<VacancyVM>>(Vacancies);
             return View(model);
@@ -63,18 +71,22 @@ namespace JobApp_Web_.Controllers
                     return View(model);
                 }
 
-                model.EmployerId = "";
+                var Employer = _userManager.GetUserAsync(User).Result;
 
-
+                model.EmployerId = Employer.Id;
 
                 var vacancy = _mapper.Map<vacancy>(model);
                 var isSucess = _repo.Create(vacancy);
+
                 if (!isSucess)
                 {
                     ModelState.AddModelError("", "Something went wrong...");
                     return View(model);
                 }
 
+
+                
+                
                 return RedirectToAction(nameof(Index));
             }
             catch

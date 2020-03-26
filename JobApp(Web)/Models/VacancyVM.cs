@@ -19,7 +19,9 @@ namespace JobApp_Web_.Models
         public string Job_Requirements { get; set; }
         public int Job_level { get; set; }
         public string Employment_type { get; set; }
-        public DateTime? Submit_deadline { get; set; }
+      
+        [DataType(DataType.Date)]
+        public DateTime Submit_deadline { get; set; }
         public string Job_category { get; set; }
 
        
@@ -31,6 +33,25 @@ namespace JobApp_Web_.Models
       // public IEnumerable<SelectListItem> Employers { get; set; }
     }
 
+    public class SearchVacancyVM
+    {
+
+        public int Id { get; set; }
+        public string Job_title { get; set; }
+        public string Job_Discription { get; set; }
+        public string Job_Requirements { get; set; }
+        public int Job_level { get; set; }
+        public string Employment_type { get; set; }
+       
+        [DataType(DataType.Date)]
+        public DateTime Submit_deadline { get; set; }
+        public string Job_category { get; set; }
 
 
-}
+        //  [ForeignKey("Employer_Id")]
+       
+        public string EmployerId { get; set; }
+
+    }
+
+    }
