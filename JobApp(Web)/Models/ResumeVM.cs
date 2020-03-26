@@ -32,7 +32,7 @@ namespace JobApp_Web_.Models
       //  [ForeignKey("Jobseeker_Id")]
         public Jobseeker Jobseeker { get; set; }
 
-        public string Jobseeker_Id { get; set; }
+        public string JobseekerId { get; set; }
     }
    
 }

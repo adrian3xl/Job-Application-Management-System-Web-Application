@@ -4,6 +4,7 @@ using JobApp_Web_.Data;
 using JobApp_Web_.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,13 @@ namespace JobApp_Web_.Controllers
 
         private readonly IResumeRepository _repo;
         private readonly IMapper _mapper;
+        private readonly UserManager<Jobseeker> _userManager;
 
-        public ResumesController(IResumeRepository repo, IMapper mapper)
+        public ResumesController(IResumeRepository repo, IMapper mapper, UserManager<Jobseeker> userManager)
         {
             _repo = repo;
             _mapper = mapper;
+            _userManager = userManager;
 
         }
         // GET: Resumes
@@ -61,8 +64,16 @@ namespace JobApp_Web_.Controllers
                     return View(model);
                 }
 
+
+                var Jobseeker = _userManager.GetUserAsync(User).Result;
+
+                model.JobseekerId = Jobseeker.Id;
+
+
+
+
                 var resume = _mapper.Map<Resume>(model);
-             // var Jobseeker_Id = resume.Jobseeker.Id;
+           
                 var isSucess = _repo.Create(resume);
                 if (!isSucess)
                 {
