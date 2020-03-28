@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobApp_Web_.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200326195354_newmifrat")]
-    partial class newmifrat
+    [Migration("20200328194912_UpdateDatabase")]
+    partial class UpdateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
