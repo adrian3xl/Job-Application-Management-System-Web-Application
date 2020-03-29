@@ -16,12 +16,12 @@ namespace JobApp_Web_.Controllers
     [Authorize]
     public class VacancyApplicationsController : Controller
     {
-        private readonly IVacancyApplicationRepository _repo;
+        private readonly IVacancyApplicationRepository _VacancyApplicationRepositoryRepo;
         private readonly IMapper _mapper;
         private readonly UserManager<Jobseeker> _userManager;
-        public VacancyApplicationsController(IVacancyApplicationRepository repo, IMapper mapper, UserManager<Jobseeker> userManager)
+        public VacancyApplicationsController(IVacancyApplicationRepository VacancyApplicationRepositoryRepo, IMapper mapper, UserManager<Jobseeker> userManager)
         {
-            _repo = repo;
+            _VacancyApplicationRepositoryRepo = VacancyApplicationRepositoryRepo;
             _mapper = mapper;
             _userManager = userManager;
         }
@@ -31,8 +31,13 @@ namespace JobApp_Web_.Controllers
         // GET: Vacancy_Applications
         public ActionResult Index()
         {
-            var Vacancy_Applications = _repo.FindAll().ToList();
-            var model = _mapper.Map<List<Vacancy_Application>, List<Vacancy_ApplicationVM>>(Vacancy_Applications);
+            var Vacancy_Applications = _VacancyApplicationRepositoryRepo.FindAll();
+            var Vacancy_ApplicationsModel = _mapper.Map<List<Vacancy_ApplicationVM>>(Vacancy_Applications);
+            var model = new VacancyApplicationAdminViewVM
+            {
+                Vacancy_Applications = Vacancy_ApplicationsModel
+            };
+
             return View(model);
         }
 
@@ -40,11 +45,11 @@ namespace JobApp_Web_.Controllers
         // GET: VacancyApplications/Details/5
         public ActionResult Details(int id)
         {
-            if (_repo.IsExist(id))
+            if (_VacancyApplicationRepositoryRepo.IsExist(id))
             {
                 return NotFound();
             }
-            var vacancy_Application = _repo.FindById(id);
+            var vacancy_Application = _VacancyApplicationRepositoryRepo.FindById(id);
             var model = _mapper.Map<Vacancy_ApplicationVM> (vacancy_Application);
             return View(model);
         }
@@ -68,7 +73,7 @@ namespace JobApp_Web_.Controllers
                 }
 
                 var vacancy_Application = _mapper.Map<Vacancy_Application>(model);
-                var isSucess = _repo.Create(vacancy_Application);
+                var isSucess = _VacancyApplicationRepositoryRepo.Create(vacancy_Application);
                 if (!isSucess)
                 {
                     ModelState.AddModelError("", "Something went wrong...");
@@ -86,11 +91,11 @@ namespace JobApp_Web_.Controllers
         // GET: VacancyApplications/Edit/5
         public ActionResult Edit(int id)
         {
-            if (!_repo.IsExist(id))
+            if (!_VacancyApplicationRepositoryRepo.IsExist(id))
             {
                 return NotFound();
             }
-            var vacancy_Application = _repo.FindById(id);
+            var vacancy_Application = _VacancyApplicationRepositoryRepo.FindById(id);
             var model = _mapper.Map<Vacancy_ApplicationVM>(vacancy_Application);
             return View(model);
         }
@@ -107,7 +112,7 @@ namespace JobApp_Web_.Controllers
                     return View(model);
                 }
                 var vacancy_Application = _mapper.Map<Vacancy_Application>(model);
-                var isSucess = _repo.Create(vacancy_Application);
+                var isSucess = _VacancyApplicationRepositoryRepo.Create(vacancy_Application);
                 if (!isSucess)
                 {
                     ModelState.AddModelError("", "Something went wrong...");
@@ -126,12 +131,12 @@ namespace JobApp_Web_.Controllers
         // GET: VacancyApplications/Delete/5
         public ActionResult Delete(int id)
         {
-            var vacancy_Application = _repo.FindById(id);
+            var vacancy_Application = _VacancyApplicationRepositoryRepo.FindById(id);
             if (vacancy_Application == null)
             {
                 return NotFound();
             }
-            var isSucess = _repo.Delete(vacancy_Application);
+            var isSucess = _VacancyApplicationRepositoryRepo.Delete(vacancy_Application);
             if (!isSucess)
             {
 
@@ -148,12 +153,12 @@ namespace JobApp_Web_.Controllers
         {
             try
             {
-                var Vacancy_Application = _repo.FindById(id);
+                var Vacancy_Application = _VacancyApplicationRepositoryRepo.FindById(id);
                 if (Vacancy_Application == null)
                 {
                     return NotFound();
                 }
-                var isSucess = _repo.Delete(Vacancy_Application);
+                var isSucess = _VacancyApplicationRepositoryRepo.Delete(Vacancy_Application);
                 if (!isSucess)
                 {
 

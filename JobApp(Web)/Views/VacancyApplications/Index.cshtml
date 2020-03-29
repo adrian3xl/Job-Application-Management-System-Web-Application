@@ -1,0 +1,49 @@
+﻿@model VacancyApplicationAdminViewVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+              Applicant
+            </th>
+            <th>
+              Vacancy Position
+            </th>
+            <th>
+               Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vacancy_Applications) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Resume_request.Jobseeker)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vacancy_request.Job_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Application_status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

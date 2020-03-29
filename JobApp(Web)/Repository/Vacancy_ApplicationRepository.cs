@@ -1,5 +1,6 @@
 ﻿using JobApp_Web_.Contracts;
 using JobApp_Web_.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,13 +29,17 @@ namespace JobApp_Web_.Repository
 
         public ICollection<Vacancy_Application> FindAll()
         {
-         var Vacancy_Applications = _db.Vacancy_Applications.ToList();
+         var Vacancy_Applications = _db.Vacancy_Applications.
+                Include(q=> q.Resume_request).
+                Include(q=> q.Vacancy_request)
+                .ToList();
             return Vacancy_Applications;
         }
 
         public Vacancy_Application FindById(int id)
         {
-            var Vacancy_Application = _db.Vacancy_Applications.Find(id);
+            var Vacancy_Application = _db.Vacancy_Applications.Include(q => q.Resume_request).
+                Include(q => q.Vacancy_request).FirstOrDefault(q=> q.Id==id);
 
             return Vacancy_Application;
         }

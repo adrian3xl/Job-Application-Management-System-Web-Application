@@ -9,7 +9,7 @@ namespace JobApp_Web_.Models
 {
     public class Vacancy_ApplicationVM
     {
-        [Key]
+       
         public int Id { get; set; }
         [Required]
         public ResumeVM Resume_request { get; set; }
@@ -25,5 +25,10 @@ namespace JobApp_Web_.Models
         public IEnumerable<SelectListItem> Vacancy_requests { get; set; }
        [Key]
         public IEnumerable<SelectListItem> Resume_requests { get; set; }
+    }
+
+    public class VacancyApplicationAdminViewVM
+    {
+     public   List<Vacancy_ApplicationVM> Vacancy_Applications { get; set; }
     }
 }
