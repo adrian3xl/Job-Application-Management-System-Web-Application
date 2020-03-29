@@ -31,6 +31,7 @@ namespace JobApp_Web_.Repository
         {
          var Vacancy_Applications = _db.Vacancy_Applications.
                 Include(q=> q.Resume_request).
+                Include(q=>q.Resume_request.Jobseeker).
                 Include(q=> q.Vacancy_request)
                 .ToList();
             return Vacancy_Applications;
@@ -38,8 +39,10 @@ namespace JobApp_Web_.Repository
 
         public Vacancy_Application FindById(int id)
         {
-            var Vacancy_Application = _db.Vacancy_Applications.Include(q => q.Resume_request).
-                Include(q => q.Vacancy_request).FirstOrDefault(q=> q.Id==id);
+            var Vacancy_Application = _db.Vacancy_Applications.Include(q => q.Resume_request)
+                .Include(q => q.Resume_request.Jobseeker).
+                Include(q => q.Vacancy_request)
+                .FirstOrDefault(q=> q.Id==id);
 
             return Vacancy_Application;
         }
