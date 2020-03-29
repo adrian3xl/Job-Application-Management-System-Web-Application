@@ -21,10 +21,10 @@ namespace JobApp_Web_.Models
 
         public string Application_status { get; set; }
 
-        [Key]
-        public IEnumerable<SelectListItem> Vacancy_requests { get; set; }
-       [Key]
-        public IEnumerable<SelectListItem> Resume_requests { get; set; }
+    //    [Key]
+     //   public IEnumerable<SelectListItem> Vacancy_requests { get; set; }
+     //  [Key]
+    //    public IEnumerable<SelectListItem> Resume_requests { get; set; }
     }
 
     public class VacancyApplicationAdminViewVM
