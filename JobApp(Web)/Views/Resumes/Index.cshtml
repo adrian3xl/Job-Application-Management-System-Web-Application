@@ -41,7 +41,7 @@
             </td>
            
             <td>
-                @Html.DisplayFor(modelItem => item.JobseekerId)
+                @Html.DisplayFor(modelItem => item.Jobseeker.Firstname)@Html.DisplayFor(modelItem => item.Jobseeker.Lastname)
             </td>
             <td>
                 <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id"><i class="fa fa-pencil" aria-hidden="true"></i></a> 

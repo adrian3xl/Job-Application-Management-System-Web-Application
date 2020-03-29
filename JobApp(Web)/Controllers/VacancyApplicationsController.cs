@@ -8,6 +8,7 @@ using JobApp_Web_.Data;
 using JobApp_Web_.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobApp_Web_.Controllers
@@ -17,12 +18,16 @@ namespace JobApp_Web_.Controllers
     {
         private readonly IVacancyApplicationRepository _repo;
         private readonly IMapper _mapper;
-        public VacancyApplicationsController(IVacancyApplicationRepository repo, IMapper mapper)
+        private readonly UserManager<Jobseeker> _userManager;
+        public VacancyApplicationsController(IVacancyApplicationRepository repo, IMapper mapper, UserManager<Jobseeker> userManager)
         {
             _repo = repo;
             _mapper = mapper;
-
+            _userManager = userManager;
         }
+
+
+        [Authorize(Roles ="Employer")]
         // GET: Vacancy_Applications
         public ActionResult Index()
         {
