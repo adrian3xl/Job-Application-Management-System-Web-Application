@@ -45,12 +45,14 @@ namespace JobApp_Web_.Controllers
         // GET: VacancyApplications/Details/5
         public ActionResult Details(int id)
         {
-            if (_VacancyApplicationRepositoryRepo.IsExist(id))
+            if (!_VacancyApplicationRepositoryRepo.IsExist(id))
             {
                 return NotFound();
             }
-            var vacancy_Application = _VacancyApplicationRepositoryRepo.FindById(id);
-            var model = _mapper.Map<Vacancy_ApplicationVM> (vacancy_Application);
+            var Vacancy_Applications = _VacancyApplicationRepositoryRepo.FindById(id);
+            var model = _mapper.Map<Vacancy_ApplicationVM>(Vacancy_Applications);
+           
+
             return View(model);
         }
 
