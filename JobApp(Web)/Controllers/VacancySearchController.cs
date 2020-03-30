@@ -2,13 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using JobApp_Web_.Contracts;
+using JobApp_Web_.Data;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobApp_Web_.Controllers
 {
     public class VacancySearchController : Controller
     {
+        private readonly IVacancySearchRepository _VacancySearchRepositoryRepo;
+       private readonly IMapper _mapper;
+        private readonly UserManager<Jobseeker> _userManager;
+
+        VacancySearchController(IVacancySearchRepository VacancySearchRepositoryRepo, IMapper mapper, UserManager<Jobseeker> userManager)
+        {
+            _VacancySearchRepositoryRepo = VacancySearchRepositoryRepo;
+            _mapper = mapper;
+            _userManager = userManager;
+        }
+
+
         // GET: VacancySearch
         public ActionResult Index()
         {
