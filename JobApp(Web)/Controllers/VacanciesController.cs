@@ -1,37 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using JobApp_Web_.Contracts;
 using JobApp_Web_.Data;
 using JobApp_Web_.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JobApp_Web_.Controllers
 
 
 {
-   
+
     public class VacanciesController : Controller
     {
 
+        private readonly IResumeRepository _ResumeRepositoryRepo;
         private readonly IVacancyRepository _repo;
         private readonly IMapper _mapper;
+        private readonly IVacancyApplicationRepository _VacancyApplicationRepositoryRepo;
         private readonly UserManager<Employer> _userManager;
-        public VacanciesController(IVacancyRepository repo, 
-            
-            IMapper mapper,
-            UserManager<Employer> userManager)
+        public VacanciesController(IVacancyRepository repo,
+                                    IVacancyApplicationRepository VacancyApplicationRepositoryRepo,
+                                    IResumeRepository ResumeRepositoryRepo,
+                                    IMapper mapper,
+                                    UserManager<Employer> userManager)
         {
             _repo = repo;
             _mapper = mapper;
             _userManager = userManager;
 
         }
+
+        [Authorize(Roles = "Jobseeker")]
+        public ActionResult Apply(int id)
+        {
+            if (!_repo.IsExist(id))
+            {
+                return NotFound();
+            }
+            var vacancy = _repo.FindById(id);
+            var model = _mapper.Map<VacancyVM>(vacancy);
+            return View(model);
+        }
+
+       
+
 
         [Authorize(Roles = "Jobseeker")]
         public ActionResult AvailableJobs()
@@ -47,7 +63,7 @@ namespace JobApp_Web_.Controllers
         // GET: Vacancies
         public ActionResult Index()
         {
-         
+
             var Vacancies = _repo.FindAll().ToList();
             var model = _mapper.Map<List<vacancy>, List<VacancyVM>>(Vacancies);
             return View(model);
@@ -65,6 +81,7 @@ namespace JobApp_Web_.Controllers
             var model = _mapper.Map<VacancyVM>(Vacancy);
             return View(model);
         }
+      
         [Authorize(Roles = "Employer")]
         // GET: Vacancies/Create
         public ActionResult Create()
@@ -99,8 +116,8 @@ namespace JobApp_Web_.Controllers
                 }
 
 
-                
-                
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -108,21 +125,21 @@ namespace JobApp_Web_.Controllers
                 ModelState.AddModelError("", "Something went wrong...");
                 return View(model);
             }
-        
-         }
+
+        }
         [Authorize(Roles = "Employer")]
 
         // GET: Vacancies/Edit/5
         public ActionResult Edit(int id)
         {
-        if (!_repo.IsExist(id))
-        {
-            return NotFound();
+            if (!_repo.IsExist(id))
+            {
+                return NotFound();
+            }
+            var vacancy = _repo.FindById(id);
+            var model = _mapper.Map<VacancyVM>(vacancy);
+            return View(model);
         }
-        var vacancy = _repo.FindById(id);
-        var model = _mapper.Map<VacancyVM>(vacancy);
-        return View(model);
-    }
 
         // POST: Vacancies/Edit/5
         [HttpPost]
