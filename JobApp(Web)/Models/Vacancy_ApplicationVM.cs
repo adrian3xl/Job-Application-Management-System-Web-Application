@@ -35,9 +35,12 @@ namespace JobApp_Web_.Models
     public class VacancySearchVM
     {
         //    [Key]
+        public int Vacancy_request_id { get; set; }
         public IEnumerable<SelectListItem> Vacancy_requests { get; set; }
         //  [Key]
+        public int Resume_request_id { get; set; }
         public IEnumerable<SelectListItem> Resume_requests { get; set; }
+
     }
 
 }

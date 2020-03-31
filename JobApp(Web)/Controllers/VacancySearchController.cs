@@ -5,21 +5,31 @@ using System.Threading.Tasks;
 using AutoMapper;
 using JobApp_Web_.Contracts;
 using JobApp_Web_.Data;
+using JobApp_Web_.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace JobApp_Web_.Controllers
 {
     public class VacancySearchController : Controller
     {
         private readonly IVacancySearchRepository _VacancySearchRepositoryRepo;
+        private readonly IResumeRepository _ResumeRepositoryRepo;
+        private readonly IVacancyApplicationRepository _VacancyApplicationRepositoryRepo;
+        private readonly IVacancyRepository _VacancyRepositoryRepo;
+        
+
        private readonly IMapper _mapper;
         private readonly UserManager<Jobseeker> _userManager;
 
-        VacancySearchController(IVacancySearchRepository VacancySearchRepositoryRepo, IMapper mapper, UserManager<Jobseeker> userManager)
+        VacancySearchController(IVacancySearchRepository VacancySearchRepositoryRepo, IResumeRepository ResumeRepositoryRepo, IVacancyRepository VacancyRepositoryRepo, IVacancyApplicationRepository VacancyApplicationRepositoryRepo, IMapper mapper, UserManager<Jobseeker> userManager)
         {
             _VacancySearchRepositoryRepo = VacancySearchRepositoryRepo;
+            _ResumeRepositoryRepo = ResumeRepositoryRepo;
+            _VacancyRepositoryRepo = VacancyRepositoryRepo;
+            _VacancyApplicationRepositoryRepo = VacancyApplicationRepositoryRepo;
             _mapper = mapper;
             _userManager = userManager;
         }
@@ -28,7 +38,10 @@ namespace JobApp_Web_.Controllers
         // GET: VacancySearch
         public ActionResult Index()
         {
-            return View();
+            var VacancyRequest = _VacancyRepositoryRepo.FindAll();
+            var model = VacancyRequest;
+            return View(model);
+           
         }
 
         // GET: VacancySearch/Details/5
@@ -40,7 +53,30 @@ namespace JobApp_Web_.Controllers
         // GET: VacancySearch/Create
         public ActionResult Create()
         {
-            return View();
+            var VacancyRequest = _VacancyRepositoryRepo.FindAll();
+            var vacancyListItems = VacancyRequest.Select(q => new SelectListItem
+            {
+                Text = q.Job_title,Value=q.Id.ToString()
+
+            });
+            var ResumeRequest = _ResumeRepositoryRepo.FindAll();
+            var ResumeListItems = ResumeRequest.Select(q => new SelectListItem
+            {
+                Text = q.Qualifications,
+                Value = q.Id.ToString()
+              
+
+            });
+
+            var model = new VacancySearchVM
+            {
+                Resume_requests = ResumeListItems,
+                Vacancy_requests= vacancyListItems
+
+
+            };
+
+            return View(model);
         }
 
         // POST: VacancySearch/Create

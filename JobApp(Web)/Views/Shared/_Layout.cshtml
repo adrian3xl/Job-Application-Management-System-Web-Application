@@ -46,6 +46,16 @@
                                 </li>
 
 
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Jobs
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" asp-controller="Vacancies" asp-action="AvailableJobs">Available Jobs</a> 
+                                    </div>
+                                </li>
+
+
 
                             }
                             @if (SignInManager.IsSignedIn(User))
@@ -55,7 +65,7 @@
 
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Manage Vacancy
+                                            Manage Vacancy
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item" asp-controller="Vacancies" asp-action="Index">View Vacancy</a>
@@ -67,7 +77,7 @@
 
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Manage Applicants
+                                            Manage Applicants
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item" asp-controller="VacancyApplications" asp-action="Index">View Applicants</a>

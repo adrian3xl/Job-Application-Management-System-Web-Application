@@ -12,8 +12,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobApp_Web_.Controllers
+
+
 {
-    [Authorize (Roles="Employer")]
+   
     public class VacanciesController : Controller
     {
 
@@ -31,6 +33,17 @@ namespace JobApp_Web_.Controllers
 
         }
 
+        [Authorize(Roles = "Jobseeker")]
+        public ActionResult AvailableJobs()
+
+        {
+
+            var Vacancies = _repo.FindAll().ToList();
+            var model = _mapper.Map<List<vacancy>, List<VacancyVM>>(Vacancies);
+            return View(model);
+        }
+
+        [Authorize(Roles = "Employer")]
         // GET: Vacancies
         public ActionResult Index()
         {
@@ -39,6 +52,7 @@ namespace JobApp_Web_.Controllers
             var model = _mapper.Map<List<vacancy>, List<VacancyVM>>(Vacancies);
             return View(model);
         }
+
 
         // GET: Vacancies/Details/5
         public ActionResult Details(int id)
@@ -51,7 +65,7 @@ namespace JobApp_Web_.Controllers
             var model = _mapper.Map<VacancyVM>(Vacancy);
             return View(model);
         }
-
+        [Authorize(Roles = "Employer")]
         // GET: Vacancies/Create
         public ActionResult Create()
         {
@@ -96,6 +110,7 @@ namespace JobApp_Web_.Controllers
             }
         
          }
+        [Authorize(Roles = "Employer")]
 
         // GET: Vacancies/Edit/5
         public ActionResult Edit(int id)
