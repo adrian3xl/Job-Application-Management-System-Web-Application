@@ -16,6 +16,14 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20200318132535_ApplicationDetailsTable.cs" />
     <Compile Remove="Data\Migrations\20200318132535_ApplicationDetailsTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200401234644_migrationsecond.cs" />
+    <Compile Remove="Data\Migrations\20200401234644_migrationsecond.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200401235517_migrationsecond.cs" />
+    <Compile Remove="Data\Migrations\20200401235517_migrationsecond.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200401235607_migrationsecond.cs" />
+    <Compile Remove="Data\Migrations\20200401235607_migrationsecond.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200401235945_migrationsecond.cs" />
+    <Compile Remove="Data\Migrations\20200401235945_migrationsecond.Designer.cs" />
   </ItemGroup>
 
 

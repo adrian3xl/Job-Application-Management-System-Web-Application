@@ -21,32 +21,59 @@ namespace JobApp_Web_.Controllers
         private readonly IVacancyRepository _repo;
         private readonly IMapper _mapper;
         private readonly IVacancyApplicationRepository _VacancyApplicationRepositoryRepo;
-        private readonly UserManager<Employer> _userManager;
+        private readonly UserManager<Employer> _empManager;
+        private readonly UserManager<Jobseeker> _jobseekerManager;
         public VacanciesController(IVacancyRepository repo,
                                     IVacancyApplicationRepository VacancyApplicationRepositoryRepo,
                                     IResumeRepository ResumeRepositoryRepo,
                                     IMapper mapper,
-                                    UserManager<Employer> userManager)
+                                    UserManager<Employer> empManager,
+                                    UserManager<Jobseeker> jobseekerManager)
         {
             _repo = repo;
             _mapper = mapper;
-            _userManager = userManager;
+            _empManager = empManager;
+            _jobseekerManager = jobseekerManager;
+            _ResumeRepositoryRepo = ResumeRepositoryRepo;
+            _VacancyApplicationRepositoryRepo = VacancyApplicationRepositoryRepo;
+          
 
         }
 
-        [Authorize(Roles = "Jobseeker")]
         public ActionResult Apply(int id)
         {
             if (!_repo.IsExist(id))
             {
                 return NotFound();
             }
-            var vacancy = _repo.FindById(id);
-            var model = _mapper.Map<VacancyVM>(vacancy);
+            var Vacancy = _repo.FindById(id);
+            var model = _mapper.Map<VacancyVM>(Vacancy);
             return View(model);
         }
 
-       
+        public ActionResult ApplyNow(int id)
+        {
+            if (!_repo.IsExist(id))
+            {
+                return NotFound();
+            }
+            var username = User.Identity.Name;
+            var user = _jobseekerManager.GetUserAsync(User).Result;
+            var resume = _ResumeRepositoryRepo.FindAll().FirstOrDefault(q => q.JobseekerId == user.Id);
+            var application = new Vacancy_Application
+            {
+                Resume_requestid = resume.Id,
+                Vacancy_requestid = id
+            };
+            var isSucess = _VacancyApplicationRepositoryRepo.Create(application);
+            if (!isSucess)
+            {
+                ModelState.AddModelError("", "Something went wrong...");
+                return RedirectToAction("Apply", new { id });
+            }
+
+            return RedirectToAction(nameof(AvailableJobs));
+        }
 
 
         [Authorize(Roles = "Jobseeker")]
@@ -102,7 +129,7 @@ namespace JobApp_Web_.Controllers
                     return View(model);
                 }
 
-                var Employer = _userManager.GetUserAsync(User).Result;
+                var Employer = _empManager.GetUserAsync(User).Result;
 
                 model.EmployerId = Employer.Id;
 

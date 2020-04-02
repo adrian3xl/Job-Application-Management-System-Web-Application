@@ -64,23 +64,17 @@ namespace JobApp_Web_.Data.Migrations
                     b.Property<string>("Application_status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Resume_requestId")
+                    b.Property<int>("Resume_requestid")
                         .HasColumnType("int");
 
-                    b.Property<int>("Resume_request_id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Vacancy_requestId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Vacancy_request_id")
+                    b.Property<int>("Vacancy_requestid")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Resume_requestId");
+                    b.HasIndex("Resume_requestid");
 
-                    b.HasIndex("Vacancy_requestId");
+                    b.HasIndex("Vacancy_requestid");
 
                     b.ToTable("Vacancy_Applications");
                 });
@@ -333,9 +327,6 @@ namespace JobApp_Web_.Data.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Campany_contact_number")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Company_background")
                         .HasColumnType("nvarchar(max)");
 
@@ -383,11 +374,15 @@ namespace JobApp_Web_.Data.Migrations
                 {
                     b.HasOne("JobApp_Web_.Data.Resume", "Resume_request")
                         .WithMany()
-                        .HasForeignKey("Resume_requestId");
+                        .HasForeignKey("Resume_requestid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("JobApp_Web_.Data.vacancy", "Vacancy_request")
                         .WithMany()
-                        .HasForeignKey("Vacancy_requestId");
+                        .HasForeignKey("Vacancy_requestid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("JobApp_Web_.Data.vacancy", b =>

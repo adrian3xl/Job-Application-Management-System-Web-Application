@@ -19,9 +19,7 @@ namespace JobApp_Web_.Data
         public DbSet<Resume> Resumes { get; set; }
         public DbSet<vacancy> Vacancies { get; set; }
         public DbSet<Vacancy_Application> Vacancy_Applications { get; set; }
-        public DbSet<JobApp_Web_.Models.Vacancy_ApplicationVM> Vacancy_ApplicationVM { get; set; }
-        public DbSet<JobApp_Web_.Models.SearchVacancyVM> SearchVacancyVM { get; set; }
-        public DbSet<JobApp_Web_.Models.VacancyVM> VacancyVM { get; set; }
+
        
 
     }

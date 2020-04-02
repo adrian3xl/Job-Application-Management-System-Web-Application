@@ -1,0 +1,72 @@
+﻿@model JobApp_Web_.Models.VacancyVM
+
+@{
+    ViewData["Title"] = "Apply";
+}
+
+<h1>Apply</h1>
+
+<div>
+    <h4>VacancyVM</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Job_title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Job_title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Job_Discription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Job_Discription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Job_Requirements)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Job_Requirements)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Job_level)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Job_level)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Employment_type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employment_type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Submit_deadline)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Submit_deadline)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Job_category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Job_category)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployerId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployerId)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Apply Now", "ApplyNow", new { id = Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+</div>
