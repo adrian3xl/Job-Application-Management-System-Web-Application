@@ -16,7 +16,7 @@ namespace JobApp_Web_.Models
         [Required]
         public string Company_locatiion { get; set; }
         [Required]
-        public string Campany_contact_number { get; set; }
+        public string PhoneNumber { get; set; }
         public int Workforce_number { get; set; }
         public string Company_Email { get; set; }
         public string Industry_type { get; set; }
