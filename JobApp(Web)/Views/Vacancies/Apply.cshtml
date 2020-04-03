@@ -10,12 +10,7 @@
     <h4>VacancyVM</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
+      
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Job_title)
         </dt>
@@ -62,7 +57,7 @@
             @Html.DisplayNameFor(model => model.EmployerId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployerId)
+            @Html.DisplayFor(model => model.Employer.Company_name)
         </dd>
     </dl>
 </div>

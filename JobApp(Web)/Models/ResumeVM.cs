@@ -32,6 +32,7 @@ namespace JobApp_Web_.Models
       //  [ForeignKey("Jobseeker_Id")]
         public Jobseeker Jobseeker { get; set; }
 
+        [Display(Name = "Jobseeker")]
         public string JobseekerId { get; set; }
     }
    

@@ -11,13 +11,13 @@ namespace JobApp_Web_.Models
     {
        
         public int Id { get; set; }
-        [Required]
+        
         public ResumeVM Resume_request { get; set; }
-        public int Resume_request_id { get; set; }
-        [Required]
+        public int Resume_requestId { get; set; }
+      
         public VacancyVM Vacancy_request { get; set; }
-        [Required]
-        public int Vacancy_request_id { get; set; }
+        
+        public int vacancy_requestId { get; set; }
 
         public string Application_status { get; set; }
 
@@ -35,10 +35,10 @@ namespace JobApp_Web_.Models
     public class VacancySearchVM
     {
         //    [Key]
-        public int Vacancy_request_id { get; set; }
+        public int Vacancy_requestId { get; set; }
         public IEnumerable<SelectListItem> Vacancy_requests { get; set; }
         //  [Key]
-        public int Resume_request_id { get; set; }
+        public int Resume_requestId { get; set; }
         public IEnumerable<SelectListItem> Resume_requests { get; set; }
 
     }

@@ -14,19 +14,27 @@ namespace JobApp_Web_.Models
 
         public int Id { get; set; }
         [Required]
+        [Display(Name = "Job Title")]
         public string Job_title { get; set; }
+        [Display(Name = "Job Discription")]
         public string Job_Discription { get; set; }
+        [Display(Name = "Job Requirements")]
         public string Job_Requirements { get; set; }
+        [Display(Name = "Job Level")]
         public int Job_level { get; set; }
+        [Display(Name = "Employment Type")]
         public string Employment_type { get; set; }
       
         [DataType(DataType.Date)]
+        [Display(Name = "Deadline Date (MM/DD/YYYY)")]
         public DateTime Submit_deadline { get; set; }
+        [Display(Name = "Job Category")]
         public string Job_category { get; set; }
 
        
       //  [ForeignKey("Employer_Id")]
         public EmployerVM Employer { get; set; }
+        [Display(Name = "Employer")]
         public string EmployerId { get; set; }
 
       // [Key]

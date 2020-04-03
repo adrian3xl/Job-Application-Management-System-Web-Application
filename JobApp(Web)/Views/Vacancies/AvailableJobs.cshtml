@@ -4,73 +4,84 @@
     ViewData["Title"] = "AvailableJobs";
 }
 
-<h1>AvailableJobs</h1>
+<h1>Available Jobs</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+<table id="tblData" class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Job_title)
+             Job Title
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Job_Discription)
+               Job Discription
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Job_Requirements)
+               Job Requirements 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Job_level)
+           Job Level
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employment_type)
+              Employment Type
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Submit_deadline)
+             Submit Deadline
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Job_category)
+               Job category
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employer)
+               Company
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_Discription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_Requirements)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_level)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employment_type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Submit_deadline)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job_category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employer.Id)
-            </td>
-            <td>
-                <a asp-action="Apply" asp-route-id="@item.Id">Apply</a> |
-          
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Discription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Requirements)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_level)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employment_type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Submit_deadline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employer.Company_name)
+                </td>
+                <td>
+                    <a asp-action="Apply" asp-route-id="@item.Id">Apply</a>
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@section Scripts{
+
+    <script>
+
+        $(document).ready( function () {
+            $('#tblData').DataTable();
+        } );
+
+
+    </script>
+
+}

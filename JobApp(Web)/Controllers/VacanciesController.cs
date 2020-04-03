@@ -63,7 +63,7 @@ namespace JobApp_Web_.Controllers
             var application = new Vacancy_Application
             {
                 Resume_requestid = resume.Id,
-                Vacancy_requestid = id
+                vacancy_requestid = id
             };
             var isSucess = _VacancyApplicationRepositoryRepo.Create(application);
             if (!isSucess)

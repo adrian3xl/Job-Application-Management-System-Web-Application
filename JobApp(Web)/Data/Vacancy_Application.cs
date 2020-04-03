@@ -16,7 +16,7 @@ namespace JobApp_Web_.Data
 
     //   [ForeignKey("vacancy_id")]
         public vacancy Vacancy_request { get; set; }
-        public int Vacancy_requestid { get; set; }
+        public int vacancy_requestid { get; set; }
 
         public string Application_status { get; set; }
     }

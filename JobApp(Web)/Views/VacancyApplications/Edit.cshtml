@@ -1,25 +1,41 @@
 ﻿@model JobApp_Web_.Models.Vacancy_ApplicationVM
 
 @{
-    ViewData["Title"] = "Edits";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Edits</h1>
-
+<h1>Edit</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edits">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-        
+
+
             <div class="form-group">
-                <label asp-for="Application_status" class="control-label"></label>
-                <input asp-for="Application_status" class="form-control" />
-                <span asp-validation-for="Application_status" class="text-danger"></span>
+                <label asp-for="Resume_requestId " class="control-label"></label>
+                <input asp-for="Resume_requestId" class="form-control" />
+                <span asp-validation-for="Resume_requestId " class="text-danger"></span>
             </div>
+
+
             <div class="form-group">
+                <label asp-for="vacancy_requestId " class="control-label"></label>
+                <input asp-for="vacancy_requestId" class="form-control" />
+                <span asp-validation-for="vacancy_requestId " class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Application_status " class="control-label"></label>
+                <input asp-for="Application_status" class="form-control" />
+                <span asp-validation-for="Application_status " class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
