@@ -41,6 +41,24 @@ namespace JobApp_Web_.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Jobseeker")]
+        // GET: Vacancy_Applications for jobseeker
+        public ActionResult Statusview()
+        {
+            var Vacancy_Applications = _VacancyApplicationRepositoryRepo.FindAll();
+            var Vacancy_ApplicationsModel = _mapper.Map<List<Vacancy_ApplicationVM>>(Vacancy_Applications);
+            var model = new VacancyApplicationJobseekerViewVM
+            {
+                Vacancy_Applications = Vacancy_ApplicationsModel
+            };
+
+            return View(model);
+        }
+
+
+
+
+
 
         // GET: VacancyApplications/Details/5
         public ActionResult Details(int id)

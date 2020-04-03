@@ -1,0 +1,43 @@
+﻿@model VacancyApplicationJobseekerViewVM
+
+@{
+    ViewData["Title"] = "Statusview";
+}
+
+<h1>Status View</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Resume
+            </th>
+            <th>
+               Vacancy
+            </th>
+            <th>
+               Application Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vacancy_Applications)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Resume_request.Jobseeker.Firstname) @Html.DisplayFor(modelItem => item.Resume_request.Jobseeker.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vacancy_request.Job_title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Application_status)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Cancel Job</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -51,7 +51,18 @@
                                         Jobs
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" asp-controller="Vacancies" asp-action="AvailableJobs">Available Jobs</a> 
+                                        <a class="dropdown-item" asp-controller="Vacancies" asp-action="AvailableJobs">Available Jobs</a>
+                                    </div>
+                                </li>
+
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       Job Application Status
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" asp-controller="VacancyApplications" asp-action="Statusview">View Status</a>
+
                                     </div>
                                 </li>
 

@@ -32,6 +32,15 @@ namespace JobApp_Web_.Models
      public   List<Vacancy_ApplicationVM> Vacancy_Applications { get; set; }
     }
 
+
+    public class VacancyApplicationJobseekerViewVM
+    {
+        public List<Vacancy_ApplicationVM> Vacancy_Applications { get; set; }
+    }
+
+
+
+
     public class VacancySearchVM
     {
         //    [Key]
