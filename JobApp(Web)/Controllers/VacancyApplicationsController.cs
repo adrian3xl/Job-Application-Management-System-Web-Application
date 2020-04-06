@@ -163,7 +163,7 @@ namespace JobApp_Web_.Controllers
                 return BadRequest();
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Statusview));
         }
 
         // POST: VacancyApplications/Delete/5
@@ -185,7 +185,7 @@ namespace JobApp_Web_.Controllers
                     return View(model);
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Statusview));
             }
             catch
             {
